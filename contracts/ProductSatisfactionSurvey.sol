@@ -92,29 +92,25 @@ contract ProductSatisfactionSurvey is SepoliaConfig {
         externalEuint32[] calldata _encryptedRatings,
         bytes[] calldata inputProofs
     ) external surveyExists(_surveyId) surveyActive(_surveyId) {
+        require(!hasSubmitted[_surveyId][msg.sender], "Already submitted ratings for this survey");
         Survey storage survey = surveys[_surveyId];
         require(_encryptedRatings.length == survey.productCount, "Number of ratings must match product count");
         require(inputProofs.length == survey.productCount, "Number of proofs must match product count");
 
-        // Process each product rating
         for (uint256 i = 0; i < survey.productCount; i++) {
-            // Convert external encrypted input to internal euint32
             euint32 encryptedRating = FHE.fromExternal(_encryptedRatings[i], inputProofs[i]);
             
-            // Add the encrypted rating to the sum for this product
             if (survey.totalResponses == 0) {
                 survey.encryptedSums[i] = encryptedRating;
             } else {
                 survey.encryptedSums[i] = FHE.add(survey.encryptedSums[i], encryptedRating);
             }
             
-            // Grant permissions for homomorphic operations
             FHE.allowThis(survey.encryptedSums[i]);
             FHE.allow(survey.encryptedSums[i], survey.admin);
         }
         
         survey.totalResponses++;
-        
         emit RatingSubmitted(_surveyId, msg.sender);
     }
 
@@ -135,6 +131,7 @@ contract ProductSatisfactionSurvey is SepoliaConfig {
     function endSurvey(uint256 _surveyId) external surveyExists(_surveyId) onlyAdmin(_surveyId) {
         Survey storage survey = surveys[_surveyId];
         require(survey.isActive, "Survey not active");
+        require(!survey.isFinalized, "Survey already finalized");
 
         survey.isActive = false;
         emit SurveyEnded(_surveyId);
