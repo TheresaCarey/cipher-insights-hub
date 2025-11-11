@@ -61,9 +61,9 @@ export const CreateSurveyDialog = ({
       return;
     }
 
-    const success = await createSurvey(title, description, productNames);
+    const trimmedProductNames = productNames.map(name => name.trim());
+    const success = await createSurvey(title.trim(), description.trim(), trimmedProductNames);
     if (success) {
-      // Reset form
       setTitle("");
       setDescription("");
       setProductNames(["Product A", "Product B", "Product C"]);

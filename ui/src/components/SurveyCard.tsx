@@ -90,6 +90,11 @@ export const SurveyCard = ({ surveyId, survey, onUpdate }: SurveyCardProps) => {
           <div className="text-sm text-muted-foreground">
             <span className="font-medium">Products:</span> {survey.productNames.join(', ')}
           </div>
+          {survey.description && (
+            <div className="text-xs text-muted-foreground line-clamp-2">
+              {survey.description}
+            </div>
+          )}
         </div>
 
         {isConnected ? (
