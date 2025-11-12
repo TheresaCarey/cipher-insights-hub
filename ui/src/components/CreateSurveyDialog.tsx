@@ -49,7 +49,7 @@ export const CreateSurveyDialog = ({
       alert("Please enter a title");
       return;
     }
-    if (productNames.some(name => !name || name.length === 0)) {
+    if (productNames.some(name => !name.trim())) {
       alert("All product names must be filled");
       return;
     }
