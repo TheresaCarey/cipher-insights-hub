@@ -110,6 +110,7 @@ contract ProductSatisfactionSurvey is SepoliaConfig {
             FHE.allow(survey.encryptedSums[i], survey.admin);
         }
         
+        hasSubmitted[_surveyId][msg.sender] = true;
         survey.totalResponses++;
         emit RatingSubmitted(_surveyId, msg.sender);
     }
@@ -131,7 +132,6 @@ contract ProductSatisfactionSurvey is SepoliaConfig {
     function endSurvey(uint256 _surveyId) external surveyExists(_surveyId) onlyAdmin(_surveyId) {
         Survey storage survey = surveys[_surveyId];
         require(survey.isActive, "Survey not active");
-        require(!survey.isFinalized, "Survey already finalized");
 
         survey.isActive = false;
         emit SurveyEnded(_surveyId);
