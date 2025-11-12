@@ -154,7 +154,7 @@ contract ProductSatisfactionSurvey is SepoliaConfig {
     /// @notice Request decryption for a specific product and publish clear results
     /// @param _surveyId The ID of the survey
     /// @param _productIndex The index of the product to decrypt
-    function finalizeProduct(uint256 _surveyId, uint256 _productIndex) external surveyExists(_surveyId) {
+    function finalizeProduct(uint256 _surveyId, uint256 _productIndex) external surveyExists(_surveyId) onlyAdmin(_surveyId) {
         Survey storage survey = surveys[_surveyId];
         require(!survey.isActive, "Survey still active");
         require(_productIndex < survey.productCount, "Invalid product index");
