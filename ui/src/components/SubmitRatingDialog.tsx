@@ -25,6 +25,9 @@ export const SubmitRatingDialog = ({
   const [ratings, setRatings] = useState<number[]>(
     Array(Number(survey.productCount)).fill(3)
   );
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async () => {
     // Validate ratings (1-5)
@@ -33,7 +36,10 @@ export const SubmitRatingDialog = ({
       return;
     }
 
+    setIsSubmitting(true);
     const success = await submitRatings(surveyId, ratings);
+    setIsSubmitting(false);
+    
     if (success) {
       onSuccess();
       onOpenChange(false);
@@ -91,8 +97,8 @@ export const SubmitRatingDialog = ({
           <Button variant="outline" onClick={() => onOpenChange(false)}>
             Cancel
           </Button>
-          <Button onClick={handleSubmit} disabled={isLoading}>
-            {isLoading ? (
+          <Button onClick={handleSubmit} disabled={isLoading || isSubmitting}>
+            {(isLoading || isSubmitting) ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 Submitting...
