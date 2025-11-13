@@ -185,6 +185,10 @@ export async function encryptInput(
   userAddress: string,
   ratingValue: number
 ): Promise<EncryptedInput> {
+  if (ratingValue < 1 || ratingValue > 5) {
+    throw new Error("Rating value must be between 1 and 5");
+  }
+  
   try {
     const encryptedInput = fhevm
       .createEncryptedInput(contractAddress, userAddress)

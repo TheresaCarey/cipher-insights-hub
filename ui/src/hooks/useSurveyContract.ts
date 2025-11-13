@@ -201,6 +201,10 @@ export function useSurveyContract() {
           throw new Error('Rating must be between 1 and 5');
         }
       }
+      
+      if (ratings.length === 0) {
+        throw new Error('At least one rating is required');
+      }
 
       // Encrypt all ratings
       console.log('[submitRatings] Encrypting ratings...', { surveyId, ratings, contractAddress });
