@@ -16,18 +16,6 @@ export const WalletConnect = () => {
   const handleConnect = () => {
     try {
       toast({
-        title: "Wallet Disconnected",
-        description: "Rainbow Wallet has been disconnected.",
-      });
-      setIsConnected(false);
-    } catch (error) {
-      console.error("Error disconnecting wallet:", error);
-    }
-  };
-
-  const handleDisconnect = () => {
-    try {
-      toast({
         title: "Wallet Connected",
         description: "Rainbow Wallet successfully connected to receive rewards.",
       });
@@ -38,6 +26,18 @@ export const WalletConnect = () => {
         description: "Failed to connect wallet. Please try again.",
         variant: "destructive",
       });
+    }
+  };
+
+  const handleDisconnect = () => {
+    try {
+      toast({
+        title: "Wallet Disconnected",
+        description: "Rainbow Wallet has been disconnected.",
+      });
+      setIsConnected(false);
+    } catch (error) {
+      console.error("Error disconnecting wallet:", error);
     }
   };
 
@@ -66,7 +66,7 @@ export const WalletConnect = () => {
         <CardDescription>
           {isConnected 
             ? "Manage your rewards and participation" 
-            : "Connect to receive participant rewards"}
+            : "Connect your wallet to receive participant rewards"}
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
