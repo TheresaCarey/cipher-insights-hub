@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Plus, Loader2, AlertCircle, RefreshCw } from 'lucide-react';
 import { useAccount, useChainId, useSwitchChain } from 'wagmi';
 import { useSurveyContract, Survey } from '@/hooks/useSurveyContract';
+import { toast } from 'sonner';
 
 const Index = () => {
   const { isConnected } = useAccount();
@@ -49,6 +50,7 @@ const Index = () => {
       setSurveys(loadedSurveys);
     } catch (error) {
       console.error('Error loading surveys:', error);
+      toast.error('Failed to load surveys. Please try again.');
     } finally {
       setLoading(false);
     }
