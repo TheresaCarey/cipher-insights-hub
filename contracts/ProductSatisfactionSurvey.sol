@@ -116,7 +116,7 @@ contract ProductSatisfactionSurvey is SepoliaConfig {
                 survey.encryptedSums[i] = FHE.add(survey.encryptedSums[i], encryptedRating);
             }
             
-            // Grant permissions
+            // Grant permissions for homomorphic operations
             FHE.allowThis(survey.encryptedSums[i]);
             FHE.allow(survey.encryptedSums[i], survey.admin);
         }
