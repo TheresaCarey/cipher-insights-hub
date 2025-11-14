@@ -64,6 +64,12 @@ contract ProductSatisfactionSurvey is SepoliaConfig {
         require(_productNames.length >= 2, "Must have at least 2 products");
         require(_productNames.length <= 5, "Cannot have more than 5 products");
         require(bytes(_title).length > 0, "Title cannot be empty");
+        require(bytes(_title).length <= 100, "Title too long");
+
+        for (uint256 i = 0; i < _productNames.length; i++) {
+            require(bytes(_productNames[i]).length > 0, "Product name cannot be empty");
+            require(bytes(_productNames[i]).length <= 50, "Product name too long");
+        }
 
         uint256 surveyId = surveys.length;
         
