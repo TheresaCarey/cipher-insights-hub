@@ -27,6 +27,7 @@ export const ViewResultsDialog = ({
   const [decryptedSums, setDecryptedSums] = useState<(number | null)[]>([]);
   const [loading, setLoading] = useState(false);
   const [finalizingIndex, setFinalizingIndex] = useState<number | null>(null);
+  const [isMarkingFinalized, setIsMarkingFinalized] = useState(false);
 
   useEffect(() => {
     if (open && isAdmin) {
@@ -65,7 +66,9 @@ export const ViewResultsDialog = ({
 
   const handleMarkFullyFinalized = async () => {
     setLoading(true);
+    setIsMarkingFinalized(true);
     const success = await markSurveyFullyFinalized(surveyId);
+    setIsMarkingFinalized(false);
     if (success) {
       onSuccess();
       onOpenChange(false);
@@ -186,10 +189,10 @@ export const ViewResultsDialog = ({
               <div className="pt-4 border-t">
                 <Button
                   onClick={handleMarkFullyFinalized}
-                  disabled={isLoading}
+                  disabled={isLoading || isMarkingFinalized}
                   className="w-full"
                 >
-                  {isLoading ? (
+                  {(isLoading || isMarkingFinalized) ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                       Finalizing...
