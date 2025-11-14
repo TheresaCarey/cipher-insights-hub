@@ -132,7 +132,8 @@ export function useSurveyContract() {
       return true;
     } catch (error: any) {
       console.error('Error creating survey:', error);
-      toast.error(error.message || 'Failed to create survey');
+      const errorMessage = error?.message || error?.reason || 'Failed to create survey';
+      toast.error(errorMessage);
       setIsLoading(false);
       return false;
     }
