@@ -28,9 +28,13 @@ export const SubmitRatingDialog = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async () => {
-    // Validate ratings (1-5)
     if (ratings.some(r => r < 1 || r > 5)) {
       alert("All ratings must be between 1 and 5");
+      return;
+    }
+    
+    if (ratings.length !== Number(survey.productCount)) {
+      alert(`Please rate all ${survey.productCount} products`);
       return;
     }
 
