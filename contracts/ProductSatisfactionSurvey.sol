@@ -30,7 +30,7 @@ contract ProductSatisfactionSurvey is SepoliaConfig {
     mapping(uint256 => uint256) private _requestToSurvey;
     mapping(uint256 => uint256) private _requestToProductIndex;
     
-    event SurveyCreated(uint256 surveyId, string title, address indexed admin);
+    event SurveyCreated(uint256 indexed surveyId, string title, address indexed admin);
     event RatingSubmitted(uint256 indexed surveyId, address indexed user);
     event SurveyEnded(uint256 indexed surveyId);
     event FinalizeRequested(uint256 indexed surveyId, uint256 requestId);
