@@ -115,7 +115,13 @@ const Index = () => {
                   <p><strong>Required Network:</strong> Localhost (Chain ID: 31337)</p>
                   <div className="mt-4">
                     <Button 
-                      onClick={() => switchChain({ chainId: 31337 })}
+                      onClick={() => {
+                        try {
+                          switchChain({ chainId: 31337 });
+                        } catch (error) {
+                          toast.error('Failed to switch network. Please switch manually in your wallet.');
+                        }
+                      }}
                       className="mb-4"
                     >
                       <RefreshCw className="mr-2 h-4 w-4" />
