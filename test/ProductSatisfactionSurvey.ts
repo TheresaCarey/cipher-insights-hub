@@ -344,6 +344,31 @@ describe("ProductSatisfactionSurvey", function () {
 
     // Average = 12 / 3 = 4.0 for all products
     // This would be calculated in the frontend after decryption
+    
+    const survey = await surveyContract.getSurvey(0);
+    expect(survey.totalResponses).to.eq(3);
+  });
+
+  it("should prevent finalization by non-admin", async function () {
+    // Create survey
+    const productNames = ["Product A", "Product B"];
+    let tx = await surveyContract
+      .connect(signers.deployer)
+      .createSurvey("Test Survey", "Test Description", productNames, 1);
+    await tx.wait();
+
+    // Fast forward time
+    await ethers.provider.send("evm_increaseTime", [2 * 3600]);
+    await ethers.provider.send("evm_mine", []);
+
+    // End survey
+    tx = await surveyContract.connect(signers.alice).endSurvey(0);
+    await tx.wait();
+
+    // Non-admin tries to finalize - should fail
+    await expect(
+      surveyContract.connect(signers.alice).finalizeProduct(0, 0)
+    ).to.be.revertedWith("Only admin can perform this action");
   });
 });
 
