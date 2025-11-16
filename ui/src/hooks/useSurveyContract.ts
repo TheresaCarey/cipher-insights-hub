@@ -201,7 +201,8 @@ export function useSurveyContract() {
       return true;
     } catch (error: any) {
       console.error('Error submitting ratings:', error);
-      toast.error(error.message || 'Failed to submit ratings');
+      const errorMessage = error?.message || error?.reason || 'Failed to submit ratings';
+      toast.error(errorMessage);
       setIsLoading(false);
       return false;
     }
