@@ -58,7 +58,7 @@ export const SurveyCard = ({ surveyId, survey, onUpdate }: SurveyCardProps) => {
   const isExpired = Date.now() > Number(survey.endTime) * 1000;
 
   return (
-    <Card className="transition-all hover:shadow-lg">
+    <Card className="transition-all hover:shadow-lg md:max-w-full">
       <CardHeader>
         <div className="flex items-start justify-between">
           <div className="flex-1">
