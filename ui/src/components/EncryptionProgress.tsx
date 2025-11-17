@@ -9,12 +9,16 @@ export const EncryptionProgress = () => {
     // Simulate encryption progress
     const timer = setInterval(() => {
       setProgress((prev) => {
-        if (prev >= 100) return 0;
+        if (prev >= 100) {
+          return 0;
+        }
         return prev + 1;
       });
     }, 100);
 
-    return () => clearInterval(timer);
+    return () => {
+      clearInterval(timer);
+    };
   }, []);
 
   return (
