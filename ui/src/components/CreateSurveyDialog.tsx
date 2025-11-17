@@ -62,7 +62,10 @@ export const CreateSurveyDialog = ({
     }
 
     const trimmedProductNames = productNames.map(name => name.trim());
-    const success = await createSurvey(title.trim(), description.trim(), trimmedProductNames);
+    const trimmedTitle = title.trim();
+    const trimmedDescription = description.trim();
+    
+    const success = await createSurvey(trimmedTitle, trimmedDescription, trimmedProductNames);
     if (success) {
       setTitle("");
       setDescription("");

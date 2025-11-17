@@ -954,6 +954,7 @@ export function useSurveyContract() {
     markSurveyFullyFinalized,
     contractDeployed,
     isLoading: isLoading || zamaLoading,
+    error: zamaLoading ? null : undefined,
   };
 }
 
