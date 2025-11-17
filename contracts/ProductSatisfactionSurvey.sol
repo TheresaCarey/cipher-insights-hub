@@ -196,6 +196,7 @@ contract ProductSatisfactionSurvey is SepoliaConfig {
 
     /// @notice Check if all products are finalized
     /// @param _surveyId The ID of the survey
+    /// @return True if all products have been decrypted and finalized
     function isSurveyFullyFinalized(uint256 _surveyId) external view surveyExists(_surveyId) returns (bool) {
         Survey storage survey = surveys[_surveyId];
         for (uint256 i = 0; i < survey.productCount; i++) {
