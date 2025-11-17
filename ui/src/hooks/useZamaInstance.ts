@@ -23,11 +23,16 @@ export function useZamaInstance() {
         return;
       }
 
-      // Only support local network and Sepolia
       if (chainId !== 31337 && chainId !== 11155111) {
         console.error('[useZamaInstance] Unsupported network:', chainId);
         const errorMsg = `Unsupported network (${chainId}). Please switch to local network (31337) or Sepolia (11155111).`;
         setError(new Error(errorMsg));
+        setIsLoading(false);
+        return;
+      }
+      
+      if (typeof window === 'undefined' || !(window as any).ethereum) {
+        setError(new Error('Web3 wallet not detected. Please install MetaMask or another Web3 wallet.'));
         setIsLoading(false);
         return;
       }

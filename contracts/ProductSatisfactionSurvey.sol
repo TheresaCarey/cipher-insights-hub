@@ -37,6 +37,7 @@ contract ProductSatisfactionSurvey is SepoliaConfig {
     event SurveyFinalized(uint256 indexed surveyId, uint256 productIndex, uint256 decryptedSum);
 
     modifier onlyAdmin(uint256 _surveyId) {
+        require(_surveyId < surveys.length, "Survey does not exist");
         require(surveys[_surveyId].admin == msg.sender, "Only admin can perform this action");
         _;
     }
