@@ -14,19 +14,31 @@ export const WalletConnect = () => {
   const { toast } = useToast();
 
   const handleConnect = () => {
-    toast({
-      title: "Wallet Connected",
-      description: "Rainbow Wallet successfully connected to receive rewards.",
-    });
-    setIsConnected(true);
+    try {
+      toast({
+        title: "Wallet Connected",
+        description: "Rainbow Wallet successfully connected to receive rewards.",
+      });
+      setIsConnected(true);
+    } catch (error) {
+      toast({
+        title: "Connection Error",
+        description: "Failed to connect wallet. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   const handleDisconnect = () => {
-    toast({
-      title: "Wallet Disconnected",
-      description: "Rainbow Wallet has been disconnected.",
-    });
-    setIsConnected(false);
+    try {
+      toast({
+        title: "Wallet Disconnected",
+        description: "Rainbow Wallet has been disconnected.",
+      });
+      setIsConnected(false);
+    } catch (error) {
+      console.error("Error disconnecting wallet:", error);
+    }
   };
 
   const handleCopyAddress = () => {
