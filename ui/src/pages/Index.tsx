@@ -169,7 +169,7 @@ const Index = () => {
             <p className="text-muted-foreground mb-4">
               No surveys found. Create the first one!
             </p>
-            <Button onClick={() => setShowCreateDialog(true)}>
+            <Button onClick={() => setShowCreateDialog(true)} className="mt-4">
               <Plus className="mr-2 h-4 w-4" />
               Create Survey
             </Button>

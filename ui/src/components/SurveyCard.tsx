@@ -61,7 +61,7 @@ export const SurveyCard = ({ surveyId, survey, onUpdate }: SurveyCardProps) => {
   const isEnded = !survey.isActive;
 
   return (
-    <Card className="transition-all hover:shadow-lg md:max-w-full">
+    <Card className="transition-all hover:shadow-lg md:max-w-full h-full flex flex-col">
       <CardHeader>
         <div className="flex items-start justify-between">
           <div className="flex-1">
