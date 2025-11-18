@@ -153,7 +153,7 @@ describe("ProductSatisfactionSurvey", function () {
       );
     await tx.wait();
 
-    // Get encrypted sums
+    // Get encrypted sums for verification
     const encryptedSumA = await surveyContract.getEncryptedSum(0, 0);
     const encryptedSumB = await surveyContract.getEncryptedSum(0, 1);
 
