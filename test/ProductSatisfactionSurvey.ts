@@ -47,7 +47,7 @@ describe("ProductSatisfactionSurvey", function () {
     const productNames = ["Product A", "Product B", "Product C"];
     const tx = await surveyContract
       .connect(signers.deployer)
-      .createSurvey("Test Survey", "Test Description", productNames, 24);
+      .createSurvey("Test Survey", "Test Description", productNames);
     await tx.wait();
 
     const surveyCount = await surveyContract.getSurveyCount();
