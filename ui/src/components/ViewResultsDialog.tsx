@@ -1,4 +1,5 @@
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { ChartWidget } from "./ChartWidget";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Survey, useSurveyContract } from "@/hooks/useSurveyContract";
