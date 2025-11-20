@@ -256,20 +256,5 @@ contract ProductSatisfactionSurvey is SepoliaConfig {
     function hasUserSubmitted(uint256 _surveyId, address _user) external view returns (bool) {
         return hasSubmitted[_surveyId][_user];
     }
-
-    /// @notice Get survey admin address
-    /// @param _surveyId The ID of the survey
-    /// @return The admin address of the survey
-    function getSurveyAdmin(uint256 _surveyId) external view surveyExists(_surveyId) returns (address) {
-        return surveys[_surveyId].admin;
-    }
-
-    /// @notice Check if survey is active and not finalized
-    /// @param _surveyId The ID of the survey
-    /// @return True if survey is active and not finalized
-    function isSurveyActive(uint256 _surveyId) external view surveyExists(_surveyId) returns (bool) {
-        Survey storage survey = surveys[_surveyId];
-        return survey.isActive && !survey.isFinalized;
-    }
 }
 

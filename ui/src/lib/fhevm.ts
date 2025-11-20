@@ -320,6 +320,7 @@ export async function decryptEuint32(
  */
 export function resetFHEVMInstance() {
   fhevmInstance = null;
+  isSDKInitialized = false;
   console.log("[FHEVM] Instance reset");
 }
 

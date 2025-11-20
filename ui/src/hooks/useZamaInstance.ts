@@ -3,6 +3,13 @@ import { useAccount } from 'wagmi';
 import { initializeFHEVM, encryptInput, resetFHEVMInstance, decryptEuint32, type FhevmInstance } from '../lib/fhevm';
 import { BrowserProvider } from 'ethers';
 
+const resetFHEVMInstance = () => {
+  if (typeof window !== 'undefined') {
+    const { resetFHEVMInstance: reset } = require('../lib/fhevm');
+    reset();
+  }
+};
+
 export function useZamaInstance() {
   const { chainId } = useAccount();
   const [instance, setInstance] = useState<FhevmInstance | null>(null);
@@ -63,8 +70,11 @@ export function useZamaInstance() {
     return () => {
       console.log('[useZamaInstance] Cleanup, chainId:', chainId);
       mounted = false;
+      if (instance) {
+        resetFHEVMInstance();
+      }
     };
-  }, [chainId]);
+  }, [chainId, instance]);
 
   // Reset instance on network change
   useEffect(() => {
