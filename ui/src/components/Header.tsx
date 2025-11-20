@@ -19,7 +19,7 @@ export const Header = () => {
               <Shield className="h-4 w-4 text-primary" />
               <span>FHE Protected</span>
             </div>
-            <ConnectButton />
+            <ConnectButton showBalance={false} />
           </div>
         </div>
       </div>
