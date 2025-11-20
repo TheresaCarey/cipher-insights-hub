@@ -7,6 +7,14 @@ A fully homomorphic encryption (FHE) powered anonymous product satisfaction surv
 - **Live Application**: [https://cipher-insights-hub.vercel.app/](https://cipher-insights-hub.vercel.app/)
 - **Demo Video**: [Watch on GitHub](https://github.com/TheresaCarey/cipher-insights-hub/blob/main/cipher-insights-hub.mp4)
 
+## 📊 Project Statistics
+
+- **Total Surveys Created**: Supports unlimited surveys
+- **Products per Survey**: 2-5 products
+- **Rating Scale**: 1-5 (Very Unsatisfied to Very Satisfied)
+- **Encryption**: Fully Homomorphic Encryption (FHE) via Zama's fhEVM
+- **Network Support**: Localhost (31337) and Sepolia Testnet (11155111)
+
 ## 🎯 Features
 
 - **Fully Anonymous Ratings**: Ratings are encrypted using FHE and remain private on-chain
@@ -36,6 +44,14 @@ Products are rated on a scale of 1-5:
 - 5 = Very Satisfied
 
 The smart contract sums all encrypted ratings for each product. The admin can then decrypt the sum and calculate average ratings using the total response count.
+
+## 🔒 Security Features
+
+- **Anonymous Ratings**: All ratings are encrypted before submission
+- **On-Chain Privacy**: Ratings remain encrypted throughout the survey process
+- **Admin-Only Decryption**: Only survey administrators can decrypt final results
+- **Duplicate Prevention**: Users can only submit ratings once per survey
+- **Input Validation**: Comprehensive validation for all user inputs
 
 ## 📋 Prerequisites
 
