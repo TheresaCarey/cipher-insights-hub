@@ -7,6 +7,12 @@ A fully homomorphic encryption (FHE) powered anonymous product satisfaction surv
 - **Live Application**: [https://cipher-insights-hub.vercel.app/](https://cipher-insights-hub.vercel.app/)
 - **Demo Video**: [Watch on GitHub](https://github.com/TheresaCarey/cipher-insights-hub/blob/main/cipher-insights-hub.mp4)
 
+The demo video showcases the complete workflow:
+1. Creating a new survey with multiple products
+2. Submitting encrypted ratings anonymously
+3. Admin finalizing and decrypting results
+4. Viewing aggregated statistics and charts
+
 ## 📊 Project Statistics
 
 - **Total Surveys Created**: Supports unlimited surveys
@@ -649,6 +655,16 @@ For issues and questions:
 - GitHub Issues: [Create an issue](https://github.com/TheresaCarey/cipher-insights-hub/issues)
 - Zama Documentation: [docs.zama.ai](https://docs.zama.ai)
 - Zama Discord: [discord.gg/zama](https://discord.gg/zama)
+
+## 🎬 Demo Video
+
+A comprehensive demo video is included in the repository (`cipher-insights-hub.mp4`) demonstrating:
+- Complete survey creation and management workflow
+- Encrypted rating submission process
+- Admin result decryption and visualization
+- Real-time statistics and chart generation
+
+The video provides a step-by-step walkthrough of all major features and use cases.
 
 ---
 

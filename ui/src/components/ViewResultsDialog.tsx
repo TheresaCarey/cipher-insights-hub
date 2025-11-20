@@ -243,6 +243,7 @@ export const ViewResultsDialog = ({
             {survey.productNames.map((productName, index) => {
               const sum = decryptedSums[index];
               const average = calculateAverage(sum, totalResponses);
+              const percentage = average ? ((average / 5) * 100).toFixed(0) : null;
               const isFinalized = sum !== null && sum > 0;
               const isCurrentlyFinalizing = finalizingIndex === index;
 
