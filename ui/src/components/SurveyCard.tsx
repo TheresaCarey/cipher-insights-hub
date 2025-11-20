@@ -26,9 +26,12 @@ export const SurveyCard = ({ surveyId, survey, onUpdate }: SurveyCardProps) => {
 
   useEffect(() => {
     if (isConnected && address) {
-      setIsAdmin(address.toLowerCase() === survey.admin.toLowerCase());
-      checkSubmissionStatus();
-      checkFinalizationStatus();
+      const adminMatch = address.toLowerCase() === survey.admin.toLowerCase();
+      setIsAdmin(adminMatch);
+      if (adminMatch || !adminMatch) {
+        checkSubmissionStatus();
+        checkFinalizationStatus();
+      }
     }
   }, [isConnected, address, survey.admin]);
 

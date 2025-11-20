@@ -38,6 +38,12 @@ const Index = () => {
     setLoading(true);
     try {
       const count = await getSurveyCount();
+      if (count === 0) {
+        setSurveys([]);
+        setLoading(false);
+        return;
+      }
+      
       const loadedSurveys: { id: number; data: Survey }[] = [];
 
       for (let i = 0; i < count; i++) {
