@@ -669,3 +669,13 @@ The video provides a step-by-step walkthrough of all major features and use case
 ---
 
 **Built with ❤️ using Zama's FHE technology**
+
+## 📝 Changelog
+
+### Version 1.0.0 (2025-11-20)
+- Initial release with full FHE survey functionality
+- Support for 2-5 products per survey
+- Anonymous encrypted rating submission
+- Admin result decryption and visualization
+- Comprehensive test coverage
+- Production-ready deployment scripts
