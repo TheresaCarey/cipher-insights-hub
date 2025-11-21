@@ -80,7 +80,9 @@
     "build:ts": "tsc --project tsconfig.json",
     "typechain": "cross-env TS_NODE_TRANSPILE_ONLY=true hardhat typechain",
     "build:ui": "cd ui && npm install && npm run build",
-    "install:ui": "cd ui && npm install"
+    "install:ui": "cd ui && npm install",
+    "deploy:localhost": "npx hardhat deploy --network localhost",
+    "deploy:sepolia": "npx hardhat deploy --network sepolia"
   },
   "overrides": {
     "ws@>=7.0.0 <7.5.10": ">=7.5.10",
